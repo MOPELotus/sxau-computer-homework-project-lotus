@@ -1,13 +1,13 @@
 # 跨境动物疫病情报分析阶段性简报
 
-- 生成时间：2026-03-28 21:13:22
-- 资料来源路径：materials\source
-- 情报抽取模式：规则回退模式
+- 生成时间：2026-03-28 21:36:11
+- 资料来源路径：materials\source\全格式示例包
+- 情报抽取模式：大模型模式
 - 特征融合方式：结构化特征 + TF-IDF 文本特征
 - 风险评分方式：监督学习
-- 已处理资料数：2
+- 已处理资料数：16
 - 跳过资料数：0
-- 生成记录数：9
+- 生成记录数：19
 
 ## 模型指标
 
@@ -30,6 +30,6 @@
 
 ## 图表路径
 
-- risk_trend: artifacts\latest\risk_trend.png
-- disease_risk_rank: artifacts\latest\disease_risk_rank.png
-- feature_importance: artifacts\latest\feature_importance.png
+- risk_trend: artifacts\latest_api\risk_trend.png
+- disease_risk_rank: artifacts\latest_api\disease_risk_rank.png
+- feature_importance: artifacts\latest_api\feature_importance.png

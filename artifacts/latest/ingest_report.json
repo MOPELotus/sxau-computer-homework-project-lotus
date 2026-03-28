@@ -1,21 +1,107 @@
 {
-  "source_path": "materials\\source",
+  "source_path": "materials\\source\\全格式示例包",
   "processed_files": [
     {
-      "file": "materials\\source\\示例疫情台账.csv",
+      "file": "materials\\source\\全格式示例包\\示例疫情台账.csv",
       "status": "processed",
       "kind": "tabular",
-      "rows": 8
+      "rows": 2
     },
     {
-      "file": "materials\\source\\补充疫情通报.md",
+      "file": "materials\\source\\全格式示例包\\示例疫情台账.xls",
+      "status": "processed",
+      "kind": "tabular",
+      "rows": 2
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情台账.xlsx",
+      "status": "processed",
+      "kind": "tabular",
+      "rows": 2
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情图片.bmp",
+      "status": "processed",
+      "kind": "image-vision",
+      "rows": 1
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情图片.jpeg",
+      "status": "processed",
+      "kind": "image-vision",
+      "rows": 1
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情图片.jpg",
+      "status": "processed",
+      "kind": "image-vision",
+      "rows": 1
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情图片.png",
+      "status": "processed",
+      "kind": "image-vision",
+      "rows": 1
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情图片.webp",
+      "status": "processed",
+      "kind": "image-vision",
+      "rows": 1
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情扫描.pdf",
+      "status": "processed",
+      "kind": "pdf-text",
+      "rows": 1
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情材料.doc",
+      "status": "processed",
+      "kind": "legacy-office-converted",
+      "rows": 1,
+      "note": "已先转换为 PDF 再解析：示例疫情材料.pdf"
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情材料.docx",
+      "status": "processed",
+      "kind": "docx-text",
+      "rows": 1
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情汇报.ppt",
+      "status": "processed",
+      "kind": "legacy-office-converted",
+      "rows": 1,
+      "note": "已先转换为 PDF 再解析：示例疫情汇报.pdf"
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情汇报.pptx",
+      "status": "processed",
+      "kind": "pptx-text",
+      "rows": 1
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情记录.json",
+      "status": "processed",
+      "kind": "json-table",
+      "rows": 1
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情通报.md",
+      "status": "processed",
+      "kind": "text",
+      "rows": 1
+    },
+    {
+      "file": "materials\\source\\全格式示例包\\示例疫情通报.txt",
       "status": "processed",
       "kind": "text",
       "rows": 1
     }
   ],
   "skipped_files": [],
-  "processed_file_count": 2,
+  "processed_file_count": 16,
   "skipped_file_count": 0,
-  "record_count": 9
+  "record_count": 19
 }

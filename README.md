@@ -54,6 +54,13 @@
 - `.ppt`
 - `.pptx`
 
+仓库内已经附带一套完整示例，位于 `materials/source/全格式示例包`，覆盖上述全部格式。
+如需重新生成，可执行：
+
+```powershell
+.\tools\generate_sample_materials.ps1
+```
+
 程序会自动完成以下处理：
 
 1. 扫描资料目录
@@ -86,7 +93,13 @@ Copy-Item .env.example .env
 等价命令：
 
 ```powershell
-python -m disease_intel.cli run --input materials/source --output artifacts/latest
+python -m disease_intel.cli run --input "materials/source/全格式示例包" --output artifacts/latest
+```
+
+若要处理你自己的资料目录：
+
+```powershell
+python -m disease_intel.cli run --input materials/source --output artifacts/latest_api
 ```
 
 ## SiliconFlow 配置

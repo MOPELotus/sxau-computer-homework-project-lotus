@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import base64
+import io
 import json
 import math
 import mimetypes
@@ -15,6 +16,7 @@ from typing import Any
 import fitz
 import pandas as pd
 from docx import Document
+from PIL import Image
 from pptx import Presentation
 from pypdf import PdfReader
 
@@ -327,8 +329,10 @@ def _pdf_to_data_urls(file_path: Path) -> list[str]:
 
 
 def _local_image_to_data_url(file_path: Path) -> str:
-    mime_type = mimetypes.guess_type(file_path.name)[0] or "image/png"
-    return _bytes_to_data_url(file_path.read_bytes(), mime_type)
+    with Image.open(file_path) as image:
+        buffer = io.BytesIO()
+        image.convert("RGB").save(buffer, format="PNG")
+    return _bytes_to_data_url(buffer.getvalue(), "image/png")
 
 
 def _bytes_to_data_url(payload: bytes, mime_type: str) -> str:
@@ -347,12 +351,14 @@ def _convert_with_soffice(file_path: Path, output_dir: Path) -> Path | None:
     soffice = shutil.which("soffice")
     if not soffice:
         return None
+    file_path = file_path.resolve()
+    output_dir = output_dir.resolve()
     try:
         subprocess.run(
             [soffice, "--headless", "--convert-to", "pdf", "--outdir", str(output_dir), str(file_path)],
             check=True,
-            capture_output=True,
-            text=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         )
     except Exception:
         return None
@@ -361,6 +367,8 @@ def _convert_with_soffice(file_path: Path, output_dir: Path) -> Path | None:
 
 
 def _convert_with_office_com(file_path: Path, output_dir: Path) -> Path | None:
+    file_path = file_path.resolve()
+    output_dir = output_dir.resolve()
     output_pdf = output_dir / f"{file_path.stem}.pdf"
     escaped_input = str(file_path).replace("'", "''")
     escaped_output = str(output_pdf).replace("'", "''")
@@ -389,8 +397,8 @@ $ppt.Quit()
         subprocess.run(
             ["powershell", "-NoProfile", "-Command", script],
             check=True,
-            capture_output=True,
-            text=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         )
     except Exception:
         return None
