@@ -10,6 +10,30 @@ EXPECTED_COLUMNS = [
     "event_id",
     "report_date",
     "source_platform",
+    "source_file",
+    "country",
+    "border_region",
+    "disease",
+    "host_species",
+    "cases",
+    "deaths",
+    "culling",
+    "neighboring_outbreaks_14d",
+    "livestock_density_index",
+    "trade_flow_index",
+    "transport_access_index",
+    "border_distance_km",
+    "rainfall_anomaly",
+    "temperature_anomaly",
+    "narrative_text",
+    "cross_border_alert",
+    "label_available",
+]
+
+REQUIRED_COLUMNS = [
+    "event_id",
+    "report_date",
+    "source_platform",
     "country",
     "border_region",
     "disease",
@@ -70,11 +94,17 @@ def load_outbreak_dataset(path: str | Path) -> pd.DataFrame:
 
 
 def normalize_dataset(frame: pd.DataFrame) -> pd.DataFrame:
-    missing_columns = [column for column in EXPECTED_COLUMNS if column not in frame.columns]
+    missing_columns = [column for column in REQUIRED_COLUMNS if column not in frame.columns]
     if missing_columns:
         raise ValueError(f"Missing required columns: {', '.join(missing_columns)}")
 
     dataset = frame.copy()
+    if "source_file" not in dataset.columns:
+        dataset["source_file"] = ""
+    if "label_available" not in dataset.columns:
+        dataset["label_available"] = dataset["cross_border_alert"].notna()
+
+    dataset["source_file"] = dataset["source_file"].fillna("").astype(str).str.strip()
     dataset["report_date"] = pd.to_datetime(dataset["report_date"], errors="coerce")
     if dataset["report_date"].isna().any():
         raise ValueError("report_date contains invalid values")
@@ -88,6 +118,7 @@ def normalize_dataset(frame: pd.DataFrame) -> pd.DataFrame:
     dataset[TEXT_COLUMN] = dataset[TEXT_COLUMN].fillna("").astype(str).str.strip()
     dataset["event_id"] = dataset["event_id"].astype(str).str.strip()
     dataset[LABEL_COLUMN] = dataset[LABEL_COLUMN].astype(int)
+    dataset["label_available"] = dataset["label_available"].fillna(False).astype(bool)
 
     dataset["case_fatality_rate"] = np.where(
         dataset["cases"] > 0,
@@ -105,4 +136,3 @@ def normalize_dataset(frame: pd.DataFrame) -> pd.DataFrame:
 
     dataset = dataset.sort_values("report_date").reset_index(drop=True)
     return dataset
-

@@ -5,8 +5,8 @@ from datetime import datetime
 from pathlib import Path
 
 from .config import get_settings
-from .data import load_outbreak_dataset
 from .features import FusionFeatureBuilder
+from .ingest import load_dataset_from_source
 from .llm import SiliconFlowClient
 from .mining import IntelligenceMiner
 from .model import DiseaseRiskModel
@@ -14,74 +14,66 @@ from .visualization import create_figures
 
 
 def run_pipeline(
-    input_path: str | Path,
+    source_path: str | Path | None = None,
     output_dir: str | Path | None = None,
     llm_mode: str = "auto",
-    use_embeddings: bool = True,
 ) -> dict[str, object]:
     settings = get_settings()
+    actual_source = Path(source_path) if source_path else settings.default_materials_dir
     destination = Path(output_dir) if output_dir else settings.default_output_dir
     destination.mkdir(parents=True, exist_ok=True)
 
-    dataset = load_outbreak_dataset(input_path)
     client = _build_client(settings, llm_mode)
+    standardized_dataset, ingest_report = load_dataset_from_source(actual_source, client=client)
     miner = IntelligenceMiner(client=client)
-    mined_dataset = miner.mine_frame(dataset)
+    mined_dataset = miner.mine_frame(standardized_dataset)
 
-    feature_mode = "tfidf"
-    builder = FusionFeatureBuilder(client=client)
-    if client is not None and use_embeddings:
-        try:
-            feature_pack = builder.build(mined_dataset, use_api_embeddings=True)
-            feature_mode = feature_pack.mode
-        except Exception:
-            feature_pack = builder.build(mined_dataset, use_api_embeddings=False)
-            feature_mode = feature_pack.mode
-    else:
-        feature_pack = builder.build(mined_dataset, use_api_embeddings=False)
-        feature_mode = feature_pack.mode
-
-    trainer = DiseaseRiskModel()
-    artifacts = trainer.fit(feature_pack, mined_dataset)
-
+    feature_pack = FusionFeatureBuilder().build(mined_dataset)
+    artifacts = DiseaseRiskModel().fit(feature_pack, mined_dataset)
     figures = create_figures(artifacts.full_predictions, artifacts.feature_importance, destination)
 
+    standardized_path = destination / "standardized_dataset.csv"
     processed_path = destination / "processed_dataset.csv"
     predictions_path = destination / "predictions.csv"
     test_predictions_path = destination / "test_predictions.csv"
     importance_path = destination / "feature_importance.csv"
     metrics_path = destination / "metrics.json"
+    ingest_report_path = destination / "ingest_report.json"
     report_path = destination / "run_report.md"
 
+    standardized_dataset.to_csv(standardized_path, index=False, encoding="utf-8-sig")
     mined_dataset.to_csv(processed_path, index=False, encoding="utf-8-sig")
     artifacts.full_predictions.to_csv(predictions_path, index=False, encoding="utf-8-sig")
     artifacts.test_predictions.to_csv(test_predictions_path, index=False, encoding="utf-8-sig")
     artifacts.feature_importance.to_csv(importance_path, index=False, encoding="utf-8-sig")
-    metrics_path.write_text(
-        json.dumps(artifacts.metrics, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    metrics_path.write_text(json.dumps(artifacts.metrics, ensure_ascii=False, indent=2), encoding="utf-8")
+    ingest_report_path.write_text(json.dumps(ingest_report, ensure_ascii=False, indent=2), encoding="utf-8")
     _write_report(
         report_path=report_path,
-        input_path=Path(input_path),
+        source_path=actual_source,
         llm_mode="siliconflow" if client is not None else "heuristic",
-        feature_mode=feature_mode,
+        feature_mode=feature_pack.mode,
+        model_mode=artifacts.mode,
         metrics=artifacts.metrics,
+        ingest_report=ingest_report,
         figures=figures,
     )
 
     return {
-        "input_path": str(Path(input_path)),
+        "source_path": str(actual_source),
         "output_dir": str(destination),
         "llm_mode": "siliconflow" if client is not None else "heuristic",
-        "feature_mode": feature_mode,
+        "feature_mode": feature_pack.mode,
+        "model_mode": artifacts.mode,
         "metrics": artifacts.metrics,
         "files": {
+            "standardized_dataset": str(standardized_path),
             "processed_dataset": str(processed_path),
             "predictions": str(predictions_path),
             "test_predictions": str(test_predictions_path),
             "feature_importance_csv": str(importance_path),
             "metrics": str(metrics_path),
+            "ingest_report": str(ingest_report_path),
             "report": str(report_path),
             **figures,
         },
@@ -99,41 +91,50 @@ def _build_client(settings, llm_mode: str) -> SiliconFlowClient | None:
         api_key=settings.api_key,
         base_url=settings.api_base_url,
         chat_model=settings.chat_model,
-        embedding_model=settings.embedding_model,
         timeout=settings.request_timeout,
     )
 
 
 def _write_report(
     report_path: Path,
-    input_path: Path,
+    source_path: Path,
     llm_mode: str,
     feature_mode: str,
-    metrics: dict[str, float],
+    model_mode: str,
+    metrics: dict[str, float | None | str],
+    ingest_report: dict[str, object],
     figures: dict[str, str],
 ) -> None:
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    report = f"""# 组长阶段性技术产出简报
+    llm_mode_label = {"siliconflow": "大模型模式", "heuristic": "规则回退模式"}.get(llm_mode, llm_mode)
+    model_mode_label = {"supervised": "监督学习", "score_only": "规则评分"}.get(model_mode, model_mode)
+    report = f"""# 跨境动物疫病情报分析阶段性简报
 
 - 生成时间：{timestamp}
-- 输入数据：{input_path}
-- 情报抽取模式：{llm_mode}
-- 特征融合模式：{feature_mode}
+- 资料来源路径：{source_path}
+- 情报抽取模式：{llm_mode_label}
+- 特征融合方式：{feature_mode}
+- 风险评分方式：{model_mode_label}
+- 已处理资料数：{ingest_report["processed_file_count"]}
+- 跳过资料数：{ingest_report["skipped_file_count"]}
+- 生成记录数：{ingest_report["record_count"]}
 
-## 测试集指标
+## 模型指标
 
-- Accuracy: {metrics["accuracy"]}
-- Precision: {metrics["precision"]}
-- Recall: {metrics["recall"]}
-- F1: {metrics["f1"]}
-- ROC-AUC: {metrics["roc_auc"]}
+- Accuracy: {metrics.get("accuracy")}
+- Precision: {metrics.get("precision")}
+- Recall: {metrics.get("recall")}
+- F1: {metrics.get("f1")}
+- ROC-AUC: {metrics.get("roc_auc")}
 
 ## 建议上传到协作平台的结果
 
-- processed_dataset.csv：清洗后并附带情报抽取结果的数据表
+- standardized_dataset.csv：资料自动归一化后的标准数据表
+- processed_dataset.csv：加入大模型情报抽取结果后的分析表
 - predictions.csv：全量记录的跨境风险概率与等级
-- feature_importance.csv：模型重要特征
-- risk_trend.png：趋势图
+- feature_importance.csv：特征重要性结果
+- ingest_report.json：资料处理与跳过情况说明
+- risk_trend.png：风险趋势图
 - disease_risk_rank.png：疾病风险排序图
 - feature_importance.png：重要特征柱状图
 

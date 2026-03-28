@@ -1,4 +1,3 @@
-"""Cross-border animal disease intelligence mining toolkit."""
+"""跨境动物疫病情报挖掘工具包。"""
 
 __version__ = "0.1.0"
-

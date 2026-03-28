@@ -1,25 +1,40 @@
-# 协作平台交接建议
+# 协作平台交接说明
 
-建议组长每次完成实验后，将以下文件统一上传到 `公共情报资料库`：
+本项目建议采用“统一资料目录 + 统一结果目录 + 平台统一上传”的交接方式。
 
+## 资料投放
+
+所有待分析资料统一放入 `materials/source`，不要求组员先手工改成固定示例格式。程序会自动完成：
+
+- 资料扫描
+- 表头识别与字段映射
+- 文本资料抽取
+- 标准化数据生成
+- 风险评分与图表输出
+
+## 建议上传的结果
+
+每次运行后，建议将以下文件上传至协作平台“公共情报资料库”：
+
+- `artifacts/latest/standardized_dataset.csv`
 - `artifacts/latest/processed_dataset.csv`
 - `artifacts/latest/predictions.csv`
+- `artifacts/latest/feature_importance.csv`
 - `artifacts/latest/metrics.json`
+- `artifacts/latest/ingest_report.json`
 - `artifacts/latest/run_report.md`
 - `artifacts/latest/risk_trend.png`
 - `artifacts/latest/disease_risk_rank.png`
 - `artifacts/latest/feature_importance.png`
 
-## 对应组员使用方式
+## 组员使用建议
 
-- 张静云：下载 `run_report.md`、`metrics.json`、全部图表，用于论文技术实现和实验结果章节
-- 丁俊心：下载三张图和 `predictions.csv`，整理成 5 个标准模块的 PPT
-- 谢思凡：下载最终定稿图表和论文，用于视频脚本与后期素材
-- 鲍木梓：下载论文正文后进行版式统一，不必修改代码产出表
+- 张静云：重点下载 `run_report.md`、`metrics.json`、三张图和 `predictions.csv`
+- 丁俊心：重点下载三张图、`run_report.md` 和 `predictions.csv`
+- 鲍木梓：重点下载论文终稿，不需要改动代码产出的数据文件
+- 谢思凡：重点下载最终图表、论文和 PPT，用于视频脚本与剪辑素材整理
 
-## 推荐上传节奏
+## 注意事项
 
-1. 原始数据到位后，先上传一次 `processed_dataset.csv`
-2. 训练完成后，再补传 `metrics.json`、`predictions.csv` 和三张图
-3. 提交前一天，将完整 `artifacts/latest` 重新覆盖上传一次，确保全组拿到最新版本
-
+- 若资料目录中包含图片或 PDF，在当前单模型模式下会被登记到 `ingest_report.json`
+- 这类资料不会直接丢失，但需要后续启用视觉模型后再继续处理

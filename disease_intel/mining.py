@@ -19,6 +19,14 @@ BORDER_TERMS = [
     "transport",
     "truck",
     "market",
+    "边境",
+    "跨境",
+    "口岸",
+    "通道",
+    "运输",
+    "车辆",
+    "市场",
+    "交易",
 ]
 SPREAD_TERMS = [
     "rapid spread",
@@ -30,6 +38,14 @@ SPREAD_TERMS = [
     "long-distance",
     "transboundary",
     "new district",
+    "扩散",
+    "传播",
+    "多个",
+    "多点",
+    "候鸟",
+    "迁徙",
+    "周边乡镇",
+    "多家养殖场",
 ]
 CONTROL_TERMS = [
     "delayed",
@@ -41,6 +57,15 @@ CONTROL_TERMS = [
     "movement restriction",
     "late detection",
     "informal trade",
+    "延迟",
+    "不足",
+    "监测薄弱",
+    "免疫缺口",
+    "生物安全薄弱",
+    "扑杀",
+    "移动限制",
+    "晚发现",
+    "非正规贸易",
 ]
 
 
@@ -204,4 +229,3 @@ class IntelligenceMiner:
     @staticmethod
     def _count_terms(text: str, terms: list[str]) -> int:
         return sum(1 for term in terms if term in text)
-

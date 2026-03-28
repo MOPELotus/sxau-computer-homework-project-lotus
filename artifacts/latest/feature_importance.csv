@@ -1,157 +1,168 @@
 ﻿feature,importance
-numeric__transport_access_index,0.45327677336568495
-numeric__livestock_density_index,0.444239157346959
-numeric__trade_flow_index,0.42601750850924885
-numeric__neighboring_outbreaks_14d,0.3157671120123674
-numeric__outbreak_pressure,0.3017093085713375
-categorical__disease_LSD,0.30026896543793896
-numeric__rainfall_anomaly,0.2964000285414743
-numeric__border_proximity_score,0.26792720097467415
-numeric__border_distance_km,0.2679272009746741
-categorical__country_Kazakhstan,0.24172242630974453
-categorical__border_region_East Kazakhstan,0.24172242630974453
-categorical__disease_FMD,0.24091726288392903
-numeric__temperature_anomaly,0.2204889174516929
-categorical__border_region_Zabaykalsky Krai,0.20770914183837516
-categorical__country_Russia,0.19993876807520017
-numeric__cases,0.18503112033811658
-categorical__source_platform_WOAH,0.18098858769639772
-numeric__case_fatality_rate,0.16566317678960488
-categorical__country_Vietnam,0.15636312293162077
-numeric__intel_risk_score,0.14912205270472717
-numeric__llm_border_relevance,0.14620115243670812
-numeric__culling,0.14438293884084263
-text__kazakhstan,0.13859413079032262
-categorical__border_region_Cao Bang,0.12649396287453735
-numeric__deaths,0.11849492807009836
-categorical__host_species_poultry,0.10495865273450711
-text__informal,0.0991376019221738
-text__villages,0.09355015469039689
-categorical__disease_Newcastle Disease,0.09186672229522597
-categorical__source_platform_National Portal,0.07929761624188106
-text__several,0.0745050100087452
-text__to,0.07069830984381494
-text__across,0.06755522154072195
-text__trucks,0.06586341642252588
-text__routes,0.061767552009834005
-categorical__host_species_cattle,0.05935170255400995
-categorical__border_region_Lumbini,0.05854653912819446
-text__trade,0.058357872351625074
-text__linked,0.05545182404326099
-text__border,0.05384122940029321
-text__vaccination,0.05346731071638196
-text__within,0.05017801921127512
-categorical__country_Mongolia,0.04956357237993398
-text__ring vaccination,0.04917527231988398
-text__ring,0.04917527231988398
-text__disease,0.04785461790398079
-text__cluster,0.045241986672226245
-text__cluster was,0.045241986672226245
-text__was found,0.045241986672226245
-text__teams,0.045241986672226245
-categorical__border_region_Koshi,0.04320944992457242
-numeric__llm_control_pressure,0.04288294911148728
-text__出现fmd疫情,0.04189708993769125
-text__movement,0.0418803050150563
-text__was,0.041520713661570535
-text__restriction,0.041343502129488625
-text__movement restriction,0.041343502129488625
-text__russia,0.041343502129488625
-text__krai,0.041343502129488625
-text__bird,0.04055948912600804
-text__vietnam,0.04037314662988128
-categorical__border_region_Khentii,0.03970564255913318
-categorical__disease_Brucellosis,0.03970564255913318
-categorical__host_species_sheep,0.03970564255913318
-text__traders,0.039576743159869955
-text__multi,0.03940263528968611
-text__point,0.03940263528968611
-text__traffic multi,0.03940263528968611
-text__multi point,0.03940263528968611
-text__point spread,0.03940263528968611
-text__in cattle,0.038749432709127875
-text__from,0.03666100458327042
-categorical__country_Bhutan,0.03462724057931138
-categorical__border_region_Samtse,0.03462724057931138
-text__and,0.03452145049741103
-numeric__llm_transmission_complexity,0.033978848064473134
-text__by,0.03013987484433821
-text__completed,0.029812558335484168
-text__one,0.027979476338428524
-text__before,0.02791130513166844
-text__poultry,0.02489068638633511
-text__no,0.02466920616010471
-text__market,0.02466920616010471
-categorical__country_India,0.023868827142802616
-categorical__border_region_Sikkim,0.023868827142802616
-text__transport,0.023748369232784748
-text__in,0.023130490688044708
-categorical__country_Laos,0.022547449089365745
-categorical__border_region_Luang Namtha,0.022547449089365745
-text__near,0.022112085335190768
-text__were completed,0.021723136003522728
-text__cattle,0.02161634463607033
-text__跨境相关性评分为8 10,0.02154948307107458
-text__跨境相关性评分为8,0.02154948307107458
-text__traffic regional,0.021274430515058847
-categorical__disease_PPR,0.02080154851976706
-categorical__border_region_Kachin,0.02080154851976706
-categorical__host_species_goats,0.02080154851976706
-text__near border,0.019870585747450837
-text__clustering near,0.019870585747450837
-text__regional clustering,0.019870585747450837
-text__clustering,0.019870585747450837
-text__regional,0.019870585747450837
-categorical__border_region_Lang Son,0.01985925869981936
-text__跨境相关性评分为7 10,0.019630416594425163
-text__no market,0.018750652890499465
-text__and no,0.018750652890499465
-text__settlements,0.01723461066667713
-text__animal,0.01641899023754577
-text__reported in,0.01592689721257944
-text__farms,0.015538668710745676
-text__trading,0.015526575560998662
-categorical__country_Myanmar,0.015479991843660907
-categorical__country_Nepal,0.01533708920362203
-text__mongolia,0.01481736724284173
-text__limited,0.01481736724284173
-text__outbreak,0.013507161895892579
-categorical__disease_H5N1,0.013091930439281136
-text__traffic,0.012571813651225519
-text__10,0.012571813651225519
-text__border traffic,0.012571813651225519
-text__10 border,0.012571813651225519
-categorical__source_platform_FAO,0.01080071605892738
-categorical__border_region_Lao Cai,0.01000990135726408
-categorical__border_region_Dornod,0.0098579298208008
-text__跨境相关性评分为10 10,0.008770213002660026
-text__跨境相关性评分为10,0.008770213002660026
-categorical__host_species_swine,0.008688523303827207
-categorical__disease_ASF,0.008688523303827207
-text__出现asf疫情 跨境相关性评分为10,0.007777396651326459
-categorical__border_region_Primorsky Krai,0.007770373763174985
-text__mouth,0.006549053795582464
-text__and mouth,0.006549053795582464
-text__mouth disease,0.006549053795582464
-text__trade flow,0.006275601658995325
-text__high,0.006275601658995325
-text__flow,0.006275601658995325
-text__between,0.006275601658995325
-text__border high,0.006275601658995325
-text__markets,0.006275601658995325
-text__the,0.006065366559010584
-categorical__border_region_Shan,0.005321556676106151
-text__reporting,0.005294709161219382
-text__small,0.005294709161219382
-text__reported,0.005163983472778256
-text__myanmar,0.005042652628307883
-text__spread,0.004769709148505411
-text__nepal,0.003594334782967978
-text__farms near,0.0032812105870537946
-text__local,0.003201989752121818
-text__multiple,0.002789117562087467
-text__multiple farms,0.002789117562087467
-text__spread regional,0.002789117562087467
-text__pig,0.0009951998231780496
-text__出现asf疫情,0.0009951998231780496
-text__were,0.00032746806174402176
+numeric__llm_transmission_complexity,0.4085792096646414
+categorical__source_platform_WOAH,0.27795964334722983
+numeric__outbreak_pressure,0.276611684597314
+numeric__intel_risk_score,0.26005127749808726
+numeric__neighboring_outbreaks_14d,0.24686672567105938
+numeric__trade_flow_index,0.23525226543717212
+numeric__transport_access_index,0.22913507266262126
+numeric__llm_control_pressure,0.21840225589400775
+numeric__livestock_density_index,0.16955554131580858
+numeric__cases,0.16716531661578782
+categorical__country_哈萨克斯坦,0.1469850128319888
+categorical__border_region_东哈州,0.1469850128319888
+categorical__disease_牛结节性皮肤病,0.1469850128319888
+numeric__border_distance_km,0.1417411139270546
+numeric__border_proximity_score,0.14174111392705452
+categorical__disease_口蹄疫,0.12435084770654932
+categorical__source_platform_FAO,0.12435084770654932
+numeric__llm_border_relevance,0.09057415147964028
+numeric__deaths,0.08497591903793177
+numeric__culling,0.07678678447596507
+categorical__border_region_锡尔赫特,0.07643959458398017
+categorical__disease_PPR小反刍兽疫,0.07643959458398017
+categorical__country_孟加拉国,0.07643959458398017
+categorical__host_species_山羊,0.07643959458398017
+categorical__country_蒙古,0.06259117589627422
+categorical__border_region_东方省,0.06259117589627422
+categorical__border_region_科西省,0.0617596718102751
+categorical__country_尼泊尔,0.0617596718102751
+numeric__temperature_anomaly,0.055358812972264325
+text__spread 建议提高口岸监测频次并同步排查运输链,0.053297513250677386
+text__multi point,0.04502324838210072
+text__multi,0.04502324838210072
+text__point,0.04502324838210072
+text__spread,0.04502324838210072
+text__point spread,0.04502324838210072
+text__建议提高口岸监测频次并同步排查运输链,0.04502324838210072
+text__东哈州,0.04191311696416002
+text__东哈州 出现牛结节性皮肤病疫情,0.04191311696416002
+text__出现牛结节性皮肤病疫情,0.04191311696416002
+text__多个村庄陆续报告病例,0.04191311696416002
+text__哈萨克斯坦,0.04191311696416002
+text__出现牛结节性皮肤病疫情 跨境相关性评分为5,0.04191311696416002
+text__多个村庄陆续报告病例 牲畜卡车流动频繁,0.04191311696416002
+text__哈萨克斯坦 东哈州,0.04191311696416002
+categorical__country_越南,0.038116262187957266
+categorical__host_species_生猪,0.038116262187957266
+categorical__disease_非洲猪瘟,0.038116262187957266
+categorical__border_region_老街省,0.038116262187957266
+numeric__case_fatality_rate,0.03706069003703715
+text__出现口蹄疫疫情,0.0311194958170098
+text__traffic 建议保持常规监测,0.0311194958170098
+text__建议保持常规监测 并继续跟踪周边疫情变化,0.023906777116123202
+text__并继续跟踪周边疫情变化,0.023906777116123202
+text__建议保持常规监测,0.023906777116123202
+text__跨境相关性评分为10,0.023260967554858628
+text__跨境相关性评分为10 10,0.023260967554858628
+text__traffic multi,0.023260967554858628
+categorical__host_species_牛,0.022634165125439486
+text__多个乡镇先后出现羊群病例 活畜交易和共牧现象明显,0.0211895453925616
+text__多个乡镇先后出现羊群病例,0.0211895453925616
+text__出现ppr小反刍兽疫疫情,0.0211895453925616
+text__出现ppr小反刍兽疫疫情 跨境相关性评分为10,0.0211895453925616
+text__存在跨境传播隐患 孟加拉国,0.0211895453925616
+text__孟加拉国,0.0211895453925616
+text__孟加拉国 锡尔赫特,0.0211895453925616
+text__存在跨境传播隐患,0.0211895453925616
+text__跨境相关性评分为5,0.020430742228519604
+text__跨境相关性评分为5 10,0.020430742228519604
+text__兽医部门在24小时内完成封控 外溢风险较低,0.019120823784554434
+text__兽医部门在24小时内完成封控,0.019120823784554434
+text__出现口蹄疫疫情 跨境相关性评分为6,0.019120823784554434
+text__东方省,0.019120823784554434
+text__东方省 出现口蹄疫疫情,0.019120823784554434
+text__外溢风险较低,0.019120823784554434
+text__外溢风险较低 蒙古,0.019120823784554434
+text__出现口蹄疫疫情 跨境相关性评分为5,0.017723728943751745
+text__单个奶牛场报告病例后立即实施封锁和紧急免疫,0.017723728943751745
+text__尼泊尔,0.017723728943751745
+text__尼泊尔 科西省,0.017723728943751745
+text__单个奶牛场报告病例后立即实施封锁和紧急免疫 暂未发现跨区域运输,0.017723728943751745
+text__暂未发现跨区域运输,0.017723728943751745
+text__暂未发现跨区域运输 尼泊尔,0.017723728943751745
+categorical__country_俄罗斯,0.016418773743303607
+categorical__disease_H5N1高致病性禽流感,0.016418773743303607
+categorical__host_species_家禽,0.016418773743303607
+categorical__border_region_滨海边疆区,0.016418773743303607
+text__10,0.015680699099826216
+text__spread regional,0.012381816935167577
+text__border 建议提高口岸监测频次并同步排查运输链,0.012381816935167577
+text__clustering near,0.010765632402565336
+text__regional clustering,0.010765632402565336
+text__regional,0.010765632402565336
+text__clustering,0.010765632402565336
+text__市场链条存在跨境扩散风险 越南,0.010721928789956904
+text__市场链条存在跨境扩散风险,0.010721928789956904
+text__near,0.009512022286681566
+text__near border,0.009512022286681566
+text__出现非洲猪瘟疫情 跨境相关性评分为10,0.00905591175416828
+text__出现非洲猪瘟疫情,0.007873853855692371
+numeric__rainfall_anomaly,0.006728081244343388
+text__border,0.0064050255312638055
+text__多家养殖场同时受影响 已启动移动限制,0.003937772306185456
+text__多家养殖场同时受影响,0.003937772306185456
+text__俄罗斯,0.003937772306185456
+text__出现h5n1高致病性禽流感疫情 跨境相关性评分为10,0.003937772306185456
+text__俄罗斯 滨海边疆区,0.003937772306185456
+text__出现h5n1高致病性禽流感疫情,0.003937772306185456
+text__已启动移动限制 俄罗斯,0.003937772306185456
+text__已启动移动限制,0.003937772306185456
+text__traffic,0.00046653817772450613
+text__border traffic,0.00046653817772450613
+text__10 border,0.00046653817772450613
+categorical__border_region_博胶省,0.0
+categorical__border_region_萨姆策,0.0
+categorical__country_不丹,0.0
+categorical__source_platform_地方补充材料,0.0
+categorical__source_platform_National Portal,0.0
+categorical__country_老挝,0.0
+text__trade flow,0.0
+text__16 扑杀数,0.0
+text__21 来源平台,0.0
+text__2025 03,0.0
+text__21,0.0
+text__16,0.0
+text__不丹,0.0
+categorical__disease_新城疫,0.0
+text__2025,0.0
+text__border 建议保持常规监测,0.0
+text__92,0.0
+text__92 死亡数,0.0
+text__border high,0.0
+text__high,0.0
+text__flow 建议提高口岸监测频次并同步排查运输链,0.0
+text__flow,0.0
+text__high trade,0.0
+text__不丹 萨姆策,0.0
+text__trade,0.0
+text__traffic regional,0.0
+text__spread near,0.0
+text__国家 老挝,0.0
+text__国家,0.0
+text__出现新城疫疫情,0.0
+text__出现新城疫疫情 跨境相关性评分为3,0.0
+text__出现非洲猪瘟疫情 跨境相关性评分为7,0.0
+text__博胶省,0.0
+text__博胶省 出现非洲猪瘟疫情,0.0
+text__博胶省 报告日期,0.0
+text__发病数,0.0
+text__发病数 92,0.0
+text__后续才启动扑杀和排查,0.0
+text__后续才启动扑杀和排查 老挝,0.0
+text__多个靠近边境贸易通道的养殖点出现异常死亡,0.0
+text__多个靠近边境贸易通道的养殖点出现异常死亡 老挝,0.0
+text__地方补充材料 疫病,0.0
+text__地方补充材料,0.0
+text__宿主动物 生猪,0.0
+text__宿主动物,0.0
+text__扑杀和消杀在一个报告周期内完成,0.0
+text__扑杀和消杀在一个报告周期内完成 不丹,0.0
+text__报告日期,0.0
+text__报告日期 2025,0.0
+text__扑杀数,0.0
+text__扑杀数 230,0.0
+text__老挝 博胶省,0.0
+text__老挝,0.0
+text__来源平台 地方补充材料,0.0
+text__来源平台,0.0

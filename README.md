@@ -1,29 +1,30 @@
 # 大语言模型驱动的跨境动物疫病情报挖掘与多特征融合预测研究
 
-这是按你们小组作业“组长职责”直接落成的可运行 Python 项目，覆盖以下内容：
+本仓库用于支撑课程项目《大语言模型驱动的跨境动物疫病情报挖掘与多特征融合预测研究》的技术实现，覆盖资料归一化、情报抽取、风险预测、结果可视化与协作交接等环节。
 
-- Python 项目环境说明与依赖清单
-- SiliconFlow 大模型接口接入
-- 原始疫情数据清洗与标准化
-- LLM 驱动的文本情报抽取
-- 多特征融合风险预测
-- 可视化图表与交接材料输出
+## 项目定位
 
-项目默认支持两种运行模式：
+本项目面向小组作业中的技术主线，目标是把分散的疫情资料自动整理为统一数据资产，并输出可直接用于论文、PPT 和平台交接的分析结果。
 
-- 有 `SILICONFLOW_API_KEY`：调用 SiliconFlow 完成文本情报抽取，并可选使用嵌入向量
-- 没有 `SILICONFLOW_API_KEY`：自动切换到规则抽取 + TF-IDF 融合模式，保证 demo 可以直接跑通
+当前版本采用以下原则：
 
-## 1. 目录结构
+- 默认模型统一为 `Qwen/Qwen3.5-397B-A17B`
+- 默认入口统一为资料文件夹 `materials/source`
+- 资料无需先手工整理成示例表，再由程序执行自动筛选、字段映射、文本抽取与风险分析
+- 若未配置 `SILICONFLOW_API_KEY`，系统会退回规则模式，保证本地 demo 仍可运行
+
+## 目录结构
 
 ```text
 .
 |-- disease_intel/                # 核心代码
+|-- materials/
+|   `-- source/                   # 统一资料投放目录
 |-- data/
-|   |-- raw/                      # 后续放杜毅达采集的官方原始数据
-|   |-- processed/                # 处理中间结果
-|   `-- sample/                   # 可直接演示的示例数据
-|-- artifacts/                    # 运行后输出的图表、指标、预测结果
+|   |-- raw/                      # 保留原始数据目录
+|   |-- processed/                # 中间数据目录
+|   `-- sample/                   # 备用示例数据
+|-- artifacts/                    # 图表、指标、预测结果
 |-- docs/                         # 交接说明
 |-- tests/                        # 冒烟测试
 |-- requirements.txt
@@ -31,76 +32,87 @@
 `-- run_demo.ps1
 ```
 
-## 2. 本地运行
+## 资料投放方式
+
+将收集到的资料统一放入 `materials/source` 即可。当前版本支持：
+
+- `.csv`
+- `.xlsx`
+- `.xls`
+- `.txt`
+- `.md`
+- `.json`
+
+程序会自动完成以下处理：
+
+1. 扫描资料目录
+2. 识别表格或文本资料
+3. 自动映射字段到标准疫情结构
+4. 调用大模型抽取情报摘要与风险信号
+5. 进行多特征融合风险评分
+6. 输出图表、数据表和简报
+
+## 关于图片和 PDF
+
+当前项目按“全流程统一使用 `Qwen/Qwen3.5-397B-A17B`”的要求配置。该模式下，图片和 PDF 文件会在资料扫描报告中被标记为“需视觉模型支持”，不会被静默吞掉。
+
+也就是说：
+
+- 文字类和表格类资料已经支持自动转换
+- 图片和 PDF 若后续允许单独启用视觉模型，可继续扩展到真正的多模态处理流程
+
+## 本地运行
 
 不使用虚拟环境，直接在本机 Python 环境执行即可。
 
 ```powershell
 pip install -r requirements.txt
 Copy-Item .env.example .env
-python -m disease_intel.cli run --input data/sample/outbreak_events_sample.csv --output artifacts/latest
-```
-
-也可以直接执行：
-
-```powershell
 .\run_demo.ps1
 ```
 
-## 3. SiliconFlow 配置
+等价命令：
+
+```powershell
+python -m disease_intel.cli run --input materials/source --output artifacts/latest
+```
+
+## SiliconFlow 配置
 
 在 `.env` 中填写：
 
 ```env
 SILICONFLOW_API_KEY=你的硅基流动API密钥
-SILICONFLOW_CHAT_MODEL=Qwen/Qwen3.5-27B
-SILICONFLOW_EMBEDDING_MODEL=Qwen/Qwen3-Embedding-8B
+SILICONFLOW_CHAT_MODEL=Qwen/Qwen3.5-397B-A17B
 ```
 
-代码对接的是 SiliconFlow 官方 OpenAI 兼容接口：
+项目当前使用 SiliconFlow 官方兼容接口中的：
 
-- `POST https://api.siliconflow.cn/v1/chat/completions`
-- `POST https://api.siliconflow.cn/v1/embeddings`
-- `GET https://api.siliconflow.cn/v1/models`
+- `POST /v1/chat/completions`
+- `GET /v1/models`
 
-## 4. 输出结果
+## 运行产出
 
-运行后会在 `artifacts/latest` 下生成：
+运行结束后，`artifacts/latest` 中会生成：
 
-- `processed_dataset.csv`：加入情报抽取结果后的清洗数据
-- `predictions.csv`：每条疫情记录的跨境风险概率与等级
-- `test_predictions.csv`：测试集预测结果
-- `metrics.json`：准确率、召回率、F1、ROC-AUC
-- `feature_importance.csv`：模型重要特征
+- `standardized_dataset.csv`：资料自动归一化后的标准数据表
+- `processed_dataset.csv`：加入情报抽取结果后的分析数据表
+- `predictions.csv`：每条记录的风险概率和风险等级
+- `test_predictions.csv`：监督模式下的测试集预测结果
+- `feature_importance.csv`：特征重要性结果
+- `metrics.json`：指标文件
+- `ingest_report.json`：资料扫描、处理和跳过情况
 - `risk_trend.png`：风险趋势图
-- `disease_risk_rank.png`：不同疫病平均风险图
-- `feature_importance.png`：重要特征图
-- `run_report.md`：适合上传协作平台的简报
+- `disease_risk_rank.png`：疾病风险排序图
+- `feature_importance.png`：关键特征重要性图
+- `run_report.md`：适合上传协作平台的阶段简报
 
-## 5. 推荐工作流
+## 协作平台交接建议
 
-1. 杜毅达把官方数据放入 `data/raw/`
-2. 组长将原始数据整理成与示例文件一致的字段结构
-3. 执行预测流程，生成图表与指标
-4. 将 `artifacts/latest` 中的结果上传到协作平台“公共情报资料库”
-5. 张静云和丁俊心分别下载图表、结果表和简报用于论文及 PPT
+建议每次运行后，将 `artifacts/latest` 内的核心产出统一上传到协作平台“公共情报资料库”，供论文撰写、PPT 制作和视频录制环节同步调用。
 
-## 6. 组长职责映射
-
-- Python 环境搭建：`requirements.txt`、`.env.example`、`run_demo.ps1`
-- LLM API 调用：`disease_intel/llm.py`
-- 数据处理：`disease_intel/data.py`、`disease_intel/mining.py`
-- 算法实现：`disease_intel/features.py`、`disease_intel/model.py`
-- 实验截图与图表：运行后生成到 `artifacts/latest`
-
-## 7. 测试
+## 测试
 
 ```powershell
 python -m unittest tests/test_pipeline.py
 ```
-
-## 8. 说明
-
-- 示例数据为课程演示用的官方通报风格样本，后续可直接替换为真实采集数据
-- 若启用真实 API，但某次请求失败，程序会自动退回到规则抽取模式，避免整条流程中断
-

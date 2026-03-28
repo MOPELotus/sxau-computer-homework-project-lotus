@@ -1,0 +1,21 @@
+{
+  "source_path": "materials\\source",
+  "processed_files": [
+    {
+      "file": "materials\\source\\示例疫情台账.csv",
+      "status": "processed",
+      "kind": "tabular",
+      "rows": 8
+    },
+    {
+      "file": "materials\\source\\补充疫情通报.md",
+      "status": "processed",
+      "kind": "text",
+      "rows": 1
+    }
+  ],
+  "skipped_files": [],
+  "processed_file_count": 2,
+  "skipped_file_count": 0,
+  "record_count": 9
+}

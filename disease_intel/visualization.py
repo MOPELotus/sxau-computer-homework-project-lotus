@@ -11,6 +11,8 @@ import pandas as pd
 
 
 plt.style.use("seaborn-v0_8")
+plt.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei", "Noto Sans CJK SC", "Arial Unicode MS"]
+plt.rcParams["axes.unicode_minus"] = False
 
 
 def create_figures(
@@ -43,9 +45,9 @@ def _plot_risk_trend(predictions: pd.DataFrame, output_path: Path) -> None:
     plt.figure(figsize=(10, 5))
     plt.plot(trend["report_date"], trend["risk_probability"], marker="o", linewidth=2.2, color="#1b5e20")
     plt.fill_between(trend["report_date"], trend["risk_probability"], alpha=0.18, color="#66bb6a")
-    plt.title("Cross-Border Disease Risk Trend")
-    plt.xlabel("Report Date")
-    plt.ylabel("Average Risk Probability")
+    plt.title("跨境动物疫病风险趋势")
+    plt.xlabel("报告日期")
+    plt.ylabel("平均风险概率")
     plt.ylim(0, 1)
     plt.grid(alpha=0.25)
     plt.tight_layout()
@@ -62,8 +64,8 @@ def _plot_disease_risk_rank(predictions: pd.DataFrame, output_path: Path) -> Non
 
     plt.figure(figsize=(9, 5))
     plt.barh(ranking["disease"], ranking["risk_probability"], color="#ef6c00")
-    plt.title("Average Risk by Disease")
-    plt.xlabel("Average Risk Probability")
+    plt.title("不同疫病平均风险排序")
+    plt.xlabel("平均风险概率")
     plt.xlim(0, 1)
     plt.tight_layout()
     plt.savefig(output_path, dpi=200)
@@ -75,8 +77,8 @@ def _plot_feature_importance(feature_importance: pd.DataFrame, output_path: Path
 
     plt.figure(figsize=(10, 6))
     plt.barh(top_features["feature"], top_features["importance"], color="#1565c0")
-    plt.title("Top Feature Importance")
-    plt.xlabel("Absolute Coefficient")
+    plt.title("关键特征重要性")
+    plt.xlabel("重要性值")
     plt.tight_layout()
     plt.savefig(output_path, dpi=200)
     plt.close()

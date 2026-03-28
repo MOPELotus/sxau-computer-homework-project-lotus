@@ -30,7 +30,6 @@ class SiliconFlowClient:
     api_key: str
     base_url: str
     chat_model: str
-    embedding_model: str
     timeout: int = 60
     session: requests.Session = field(default_factory=requests.Session)
 
@@ -76,18 +75,6 @@ class SiliconFlowClient:
             raise SiliconFlowAPIError("SiliconFlow chat response schema changed.") from exc
 
         return _extract_json_object(content), response
-
-    def embed_texts(self, texts: list[str]) -> list[list[float]]:
-        payload = {
-            "model": self.embedding_model,
-            "input": texts,
-            "encoding_format": "float",
-        }
-        response = self._post("/embeddings", payload)
-        try:
-            return [item["embedding"] for item in response["data"]]
-        except KeyError as exc:
-            raise SiliconFlowAPIError("SiliconFlow embedding response schema changed.") from exc
 
     def list_models(self, sub_type: str | None = None) -> list[dict[str, Any]]:
         params = {}
