@@ -55,8 +55,9 @@ class SiliconFlowClient:
     def chat_json(
         self,
         system_prompt: str,
-        user_prompt: str,
+        user_prompt: str | list[dict[str, Any]],
         temperature: float = 0.2,
+        max_tokens: int = 1024,
     ) -> tuple[dict[str, Any], dict[str, Any]]:
         payload = {
             "model": self.chat_model,
@@ -65,7 +66,7 @@ class SiliconFlowClient:
                 {"role": "user", "content": user_prompt},
             ],
             "temperature": temperature,
-            "max_tokens": 1024,
+            "max_tokens": max_tokens,
             "enable_thinking": False,
         }
         response = self._post("/chat/completions", payload)
