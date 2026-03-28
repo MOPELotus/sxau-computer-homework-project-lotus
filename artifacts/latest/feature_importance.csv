@@ -1,0 +1,157 @@
+﻿feature,importance
+numeric__transport_access_index,0.45327677336568495
+numeric__livestock_density_index,0.444239157346959
+numeric__trade_flow_index,0.42601750850924885
+numeric__neighboring_outbreaks_14d,0.3157671120123674
+numeric__outbreak_pressure,0.3017093085713375
+categorical__disease_LSD,0.30026896543793896
+numeric__rainfall_anomaly,0.2964000285414743
+numeric__border_proximity_score,0.26792720097467415
+numeric__border_distance_km,0.2679272009746741
+categorical__country_Kazakhstan,0.24172242630974453
+categorical__border_region_East Kazakhstan,0.24172242630974453
+categorical__disease_FMD,0.24091726288392903
+numeric__temperature_anomaly,0.2204889174516929
+categorical__border_region_Zabaykalsky Krai,0.20770914183837516
+categorical__country_Russia,0.19993876807520017
+numeric__cases,0.18503112033811658
+categorical__source_platform_WOAH,0.18098858769639772
+numeric__case_fatality_rate,0.16566317678960488
+categorical__country_Vietnam,0.15636312293162077
+numeric__intel_risk_score,0.14912205270472717
+numeric__llm_border_relevance,0.14620115243670812
+numeric__culling,0.14438293884084263
+text__kazakhstan,0.13859413079032262
+categorical__border_region_Cao Bang,0.12649396287453735
+numeric__deaths,0.11849492807009836
+categorical__host_species_poultry,0.10495865273450711
+text__informal,0.0991376019221738
+text__villages,0.09355015469039689
+categorical__disease_Newcastle Disease,0.09186672229522597
+categorical__source_platform_National Portal,0.07929761624188106
+text__several,0.0745050100087452
+text__to,0.07069830984381494
+text__across,0.06755522154072195
+text__trucks,0.06586341642252588
+text__routes,0.061767552009834005
+categorical__host_species_cattle,0.05935170255400995
+categorical__border_region_Lumbini,0.05854653912819446
+text__trade,0.058357872351625074
+text__linked,0.05545182404326099
+text__border,0.05384122940029321
+text__vaccination,0.05346731071638196
+text__within,0.05017801921127512
+categorical__country_Mongolia,0.04956357237993398
+text__ring vaccination,0.04917527231988398
+text__ring,0.04917527231988398
+text__disease,0.04785461790398079
+text__cluster,0.045241986672226245
+text__cluster was,0.045241986672226245
+text__was found,0.045241986672226245
+text__teams,0.045241986672226245
+categorical__border_region_Koshi,0.04320944992457242
+numeric__llm_control_pressure,0.04288294911148728
+text__出现fmd疫情,0.04189708993769125
+text__movement,0.0418803050150563
+text__was,0.041520713661570535
+text__restriction,0.041343502129488625
+text__movement restriction,0.041343502129488625
+text__russia,0.041343502129488625
+text__krai,0.041343502129488625
+text__bird,0.04055948912600804
+text__vietnam,0.04037314662988128
+categorical__border_region_Khentii,0.03970564255913318
+categorical__disease_Brucellosis,0.03970564255913318
+categorical__host_species_sheep,0.03970564255913318
+text__traders,0.039576743159869955
+text__multi,0.03940263528968611
+text__point,0.03940263528968611
+text__traffic multi,0.03940263528968611
+text__multi point,0.03940263528968611
+text__point spread,0.03940263528968611
+text__in cattle,0.038749432709127875
+text__from,0.03666100458327042
+categorical__country_Bhutan,0.03462724057931138
+categorical__border_region_Samtse,0.03462724057931138
+text__and,0.03452145049741103
+numeric__llm_transmission_complexity,0.033978848064473134
+text__by,0.03013987484433821
+text__completed,0.029812558335484168
+text__one,0.027979476338428524
+text__before,0.02791130513166844
+text__poultry,0.02489068638633511
+text__no,0.02466920616010471
+text__market,0.02466920616010471
+categorical__country_India,0.023868827142802616
+categorical__border_region_Sikkim,0.023868827142802616
+text__transport,0.023748369232784748
+text__in,0.023130490688044708
+categorical__country_Laos,0.022547449089365745
+categorical__border_region_Luang Namtha,0.022547449089365745
+text__near,0.022112085335190768
+text__were completed,0.021723136003522728
+text__cattle,0.02161634463607033
+text__跨境相关性评分为8 10,0.02154948307107458
+text__跨境相关性评分为8,0.02154948307107458
+text__traffic regional,0.021274430515058847
+categorical__disease_PPR,0.02080154851976706
+categorical__border_region_Kachin,0.02080154851976706
+categorical__host_species_goats,0.02080154851976706
+text__near border,0.019870585747450837
+text__clustering near,0.019870585747450837
+text__regional clustering,0.019870585747450837
+text__clustering,0.019870585747450837
+text__regional,0.019870585747450837
+categorical__border_region_Lang Son,0.01985925869981936
+text__跨境相关性评分为7 10,0.019630416594425163
+text__no market,0.018750652890499465
+text__and no,0.018750652890499465
+text__settlements,0.01723461066667713
+text__animal,0.01641899023754577
+text__reported in,0.01592689721257944
+text__farms,0.015538668710745676
+text__trading,0.015526575560998662
+categorical__country_Myanmar,0.015479991843660907
+categorical__country_Nepal,0.01533708920362203
+text__mongolia,0.01481736724284173
+text__limited,0.01481736724284173
+text__outbreak,0.013507161895892579
+categorical__disease_H5N1,0.013091930439281136
+text__traffic,0.012571813651225519
+text__10,0.012571813651225519
+text__border traffic,0.012571813651225519
+text__10 border,0.012571813651225519
+categorical__source_platform_FAO,0.01080071605892738
+categorical__border_region_Lao Cai,0.01000990135726408
+categorical__border_region_Dornod,0.0098579298208008
+text__跨境相关性评分为10 10,0.008770213002660026
+text__跨境相关性评分为10,0.008770213002660026
+categorical__host_species_swine,0.008688523303827207
+categorical__disease_ASF,0.008688523303827207
+text__出现asf疫情 跨境相关性评分为10,0.007777396651326459
+categorical__border_region_Primorsky Krai,0.007770373763174985
+text__mouth,0.006549053795582464
+text__and mouth,0.006549053795582464
+text__mouth disease,0.006549053795582464
+text__trade flow,0.006275601658995325
+text__high,0.006275601658995325
+text__flow,0.006275601658995325
+text__between,0.006275601658995325
+text__border high,0.006275601658995325
+text__markets,0.006275601658995325
+text__the,0.006065366559010584
+categorical__border_region_Shan,0.005321556676106151
+text__reporting,0.005294709161219382
+text__small,0.005294709161219382
+text__reported,0.005163983472778256
+text__myanmar,0.005042652628307883
+text__spread,0.004769709148505411
+text__nepal,0.003594334782967978
+text__farms near,0.0032812105870537946
+text__local,0.003201989752121818
+text__multiple,0.002789117562087467
+text__multiple farms,0.002789117562087467
+text__spread regional,0.002789117562087467
+text__pig,0.0009951998231780496
+text__出现asf疫情,0.0009951998231780496
+text__were,0.00032746806174402176
