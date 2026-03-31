@@ -102,17 +102,17 @@ class IntelligenceMiner:
 
     def _mine_with_llm(self, row: pd.Series) -> dict[str, Any]:
         system_prompt = (
-            "你是动物疫病情报分析助手。"
-            "请基于输入的疫情通报，以 JSON 对象返回分析结果，不要输出多余解释。"
+            "你是跨境重大动物疫病预警分析助手。"
+            "请基于输入的大数据材料，以 JSON 对象返回结构化解析结果，不要输出多余解释。"
         )
         user_prompt = f"""
-请分析以下跨境动物疫病情报，并输出 JSON：
+请基于以下跨境重大动物疫病事件，完成大数据清洗与解析，并输出 JSON：
 {{
-  "summary_zh": "不超过80字的中文摘要",
+  "summary_zh": "不超过80字的中文预警摘要",
   "border_relevance": 0-10整数,
   "transmission_complexity": 0-10整数,
   "control_pressure": 0-10整数,
-  "key_signals": ["最多4个关键词"],
+  "key_signals": ["最多4个预警关键词"],
   "recommended_action": "一句中文建议"
 }}
 
@@ -200,7 +200,7 @@ class IntelligenceMiner:
 
         summary = (
             f"{row['country']} {row['border_region']} 出现{row['disease']}疫情，"
-            f"跨境相关性评分为{border_score}/10。"
+            f"跨境预警相关度评分为{border_score}/10。"
         )
 
         if row["cross_border_alert"] == 1:

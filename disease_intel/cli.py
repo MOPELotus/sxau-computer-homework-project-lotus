@@ -10,11 +10,11 @@ from .pipeline import run_pipeline
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="跨境动物疫病情报挖掘与预测工具。",
+        description="跨境重大动物疫病大数据预警分析工具。",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    run_parser = subparsers.add_parser("run", help="运行资料归一化、情报抽取和风险预测全流程。")
+    run_parser = subparsers.add_parser("run", help="运行资料归一化、大数据清洗与解析和风险预测全流程。")
     run_parser.add_argument(
         "--input",
         default=None,
@@ -25,7 +25,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--llm-mode",
         default="auto",
         choices=["auto", "heuristic", "siliconflow"],
-        help="选择大模型抽取模式。",
+        help="选择智能决策模型分析模式。",
     )
 
     models_parser = subparsers.add_parser("list-models", help="列出可用的 SiliconFlow 模型。")

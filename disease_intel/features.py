@@ -93,5 +93,5 @@ class FusionFeatureBuilder:
         return FeaturePack(
             full_features=full_features,
             feature_names=tabular_names + text_names,
-            mode="结构化特征 + TF-IDF 文本特征",
+            mode="结构化大数据特征 + TF-IDF 文本语义特征",
         )

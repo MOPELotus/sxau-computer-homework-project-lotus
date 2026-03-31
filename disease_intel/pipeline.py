@@ -106,15 +106,17 @@ def _write_report(
     figures: dict[str, str],
 ) -> None:
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    llm_mode_label = {"siliconflow": "大模型模式", "heuristic": "规则回退模式"}.get(llm_mode, llm_mode)
-    model_mode_label = {"supervised": "监督学习", "score_only": "规则评分"}.get(model_mode, model_mode)
-    report = f"""# 跨境动物疫病情报分析阶段性简报
+    llm_mode_label = {"siliconflow": "智能决策模型模式", "heuristic": "规则回退模式"}.get(llm_mode, llm_mode)
+    model_mode_label = {"supervised": "监督学习预警模型", "score_only": "规则评分预警模型"}.get(
+        model_mode, model_mode
+    )
+    report = f"""# 跨境重大动物疫病预警分析阶段性简报
 
 - 生成时间：{timestamp}
 - 资料来源路径：{source_path}
-- 情报抽取模式：{llm_mode_label}
-- 特征融合方式：{feature_mode}
-- 风险评分方式：{model_mode_label}
+- 大数据清洗与解析模式：{llm_mode_label}
+- 多维预警指标构建方式：{feature_mode}
+- 预警评分方式：{model_mode_label}
 - 已处理资料数：{ingest_report["processed_file_count"]}
 - 跳过资料数：{ingest_report["skipped_file_count"]}
 - 生成记录数：{ingest_report["record_count"]}
@@ -130,13 +132,13 @@ def _write_report(
 ## 建议上传到协作平台的结果
 
 - standardized_dataset.csv：资料自动归一化后的标准数据表
-- processed_dataset.csv：加入大模型情报抽取结果后的分析表
-- predictions.csv：全量记录的跨境风险概率与等级
-- feature_importance.csv：特征重要性结果
+- processed_dataset.csv：加入智能决策模型解析结果后的分析表
+- predictions.csv：全量记录的预警概率与等级
+- feature_importance.csv：多维预警指标重要性结果
 - ingest_report.json：资料处理与跳过情况说明
-- risk_trend.png：风险趋势图
-- disease_risk_rank.png：疾病风险排序图
-- feature_importance.png：重要特征柱状图
+- risk_trend.png：预警趋势图
+- disease_risk_rank.png：疫病预警风险排序图
+- feature_importance.png：关键预警特征柱状图
 
 ## 图表路径
 
